@@ -5,6 +5,12 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Typography from "@material-ui/core/Typography";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles({
   root: {
@@ -16,14 +22,12 @@ const disableselect = (e) => {
 };
 document.onselectstart = disableselect;
 document.onmousedown = disableselect;
+
 export default function LinearBuffer() {
-  const classes = useStyles();
-  const [progress, setProgress] = React.useState(0);
-  const [buffer, setBuffer] = React.useState(10);
-  /** */
+  const [open, setOpen] = React.useState(false);
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+
   const [darkMode, setDarkMode] = React.useState(prefersDarkMode);
-  ///console.log(prefersDarkMode);
 
   const theme = React.useMemo(() =>
     createTheme({
@@ -32,6 +36,20 @@ export default function LinearBuffer() {
       },
     })
   );
+  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const classes = useStyles();
+  const [progress, setProgress] = React.useState(0);
+  const [buffer, setBuffer] = React.useState(10);
+  /** */
+  ///console.log(prefersDarkMode);
+
   useEffect(() => {
     setDarkMode(prefersDarkMode);
   }, [prefersDarkMode]);
@@ -100,7 +118,8 @@ export default function LinearBuffer() {
     const timer = setInterval(() => {
       progressRef.current();
     }, 300);
-
+    // Abre el diálogo automáticamente cuando el componente se monta
+    handleClickOpen();
     return () => {
       clearInterval(timer);
     };
@@ -122,13 +141,31 @@ export default function LinearBuffer() {
         />
         <p></p>
         <h4 align="center">{frase}</h4>
-        <div>
-          <ins
-            class="01d94676"
-            data-key="06204f8a1f807df4131aaa5bd8c90b39"
-            data-cp-host="37097cad0d42436db1131930350b25c3|2|react-cms-omega.vercel.app"
-          ></ins>
-        </div>
+        <Dialog
+          fullScreen={fullScreen}
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="responsive-dialog-title"
+        >
+          <DialogTitle id="responsive-dialog-title">{"Anuncio"}</DialogTitle>
+          <DialogContent>
+            <div>
+              <ins
+                class="01d94676"
+                data-key="06204f8a1f807df4131aaa5bd8c90b39"
+                data-cp-host="37097cad0d42436db1131930350b25c3|2|reactblog-beta.vercel.app"
+              ></ins>
+            </div>
+          </DialogContent>
+          <DialogActions>
+            <Button autoFocus onClick={handleClose} color="primary">
+              Esperar
+            </Button>
+            <Button onClick={handleClose} color="primary" autoFocus>
+              Omitir
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
     </ThemeProvider>
   );
