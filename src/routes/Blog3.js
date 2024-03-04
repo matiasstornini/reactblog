@@ -119,7 +119,7 @@ export default function LinearBuffer() {
       progressRef.current();
     }, 300);
     // Abre el diálogo automáticamente cuando el componente se monta
-    handleClickOpen();
+    //handleClickOpen();
     return () => {
       clearInterval(timer);
     };
@@ -141,7 +141,7 @@ export default function LinearBuffer() {
         />
         <p></p>
         <h4 align="center">{frase}</h4>
-        <Dialog
+        {/* <Dialog
           fullScreen={fullScreen}
           open={open}
           onClose={handleClose}
@@ -165,7 +165,7 @@ export default function LinearBuffer() {
               Omitir
             </Button>
           </DialogActions>
-        </Dialog>
+        </Dialog> */}
       </div>
     </ThemeProvider>
   );
