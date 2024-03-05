@@ -121,7 +121,7 @@ export default function LinearBuffer() {
     // Abre el diálogo automáticamente cuando el componente se monta
     handleClickOpen();
     return () => {
-      clearInterval(timer);
+      clearInterval(timer);  
     };
   }, []);
 
