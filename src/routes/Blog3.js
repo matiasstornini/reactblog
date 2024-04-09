@@ -150,7 +150,7 @@ export default function LinearBuffer() {
           <DialogTitle id="responsive-dialog-title">{"Anuncio"}</DialogTitle>
           <DialogContent>
             <div>
-            <ins class="604c7625" data-key="ae71dfc8-d711-48c7-995e-a1f3624c865c" data-cp-host="b54028101eba41d7bda0fecd63eabfa9|3|reactblog-beta.vercel.app" data-cp-domain="reactblog-beta.vercel.app"></ins>
+            <ins class="604c7625" data-key="8124308c-86e0-41a1-8e00-2db317f006cc"  data-cp-host="b54028101eba41d7bda0fecd63eabfa9|99|reactblog-beta.vercel.app" data-cp-domain="reactblog-beta.vercel.app"></ins>
             </div>
           </DialogContent>
           <DialogActions>
